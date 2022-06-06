@@ -1,0 +1,154 @@
+ion-content{
+    --background: var(--ion-color-primary);
+}
+
+
+h2{
+ font-size: 30px;
+ color: var(--ion-color-primary);
+text-transform: uppercase;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-weight: bold;
+text-align: center;
+position: relative;
+top: 25%;
+}
+
+.text{
+    text-align: center;
+    font-size: 10px;
+    
+    padding: 40px;
+    position: relative;
+    top: 20%;
+    color: var(--ion-color-medium);  
+    
+}
+
+ion-card{
+    width: 80%;
+    height: 650px;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 70px;
+    padding: 0;
+    box-shadow: 5px 17px 13px 7px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1);
+
+}
+
+.img-bg{
+background-image: url("../../../assets/texture2.jpg");
+width: 100%;
+height: 1000px;
+bottom: 10px;
+right: 40px;
+}
+
+.logo img{
+  width: 100px;
+  height: auto;
+  position: relative;
+  left: 0;
+ }
+
+ ion-content .logo-content{
+   width: 100px;
+   height: auto;
+   margin-left: 80px;
+   margin-top: 30px;
+ }
+
+.did-floating-label-content { 
+    position:relative; 
+    margin-bottom:20px; 
+  }
+
+  .did-floating-input, .did-floating-select {
+    font-size:12px;
+    display:block;
+    width:300px;
+    height:46px;
+    padding: 0 20px;
+    background: #fff;
+    color: #323840;
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 10px;
+    box-sizing: border-box;
+    &:focus{
+      outline:none;
+      ~ .did-floating-label{
+        top:-8px;
+        font-size:13px;
+      }
+    }
+  }
+
+span{
+    padding: 3px;
+}
+.span{
+    padding: 20px;
+}
+
+p{
+    font-size: 15px;
+    color: var(--ion-color-medium);
+}
+
+
+
+
+@media screen and (min-width:801px){
+ .logo img{
+   display: none;
+ }
+  
+ }
+
+
+@media screen and (max-width:800px){
+   .img-bg{
+       display: none;
+   }
+
+   .form{
+       margin: auto;
+   }
+
+   .logo-content{
+    display: none;
+  }
+   
+  }
+
+  
+
+@media screen and (max-width:400px){
+    .did-floating-input, .did-floating-select {
+        font-size:12px;
+        display:block;
+        width:250px;
+        height:46px;
+        padding: 0 20px;
+        background: #fff;
+        color: #323840;
+        border: 1px solid rgb(218, 218, 218);
+        border-radius: 10px;
+        box-sizing: border-box;
+        &:focus{
+          outline:none;
+          ~ .did-floating-label{
+            top:-8px;
+            font-size:13px;
+          }
+        }
+      }
+ 
+    p{
+        font-size: 13px;
+    }
+
+
+    
+
+   }

@@ -1,0 +1,20 @@
+ion-item ion-label{
+    --color: var(--ion-color-primary);
+}
+
+ion-item ion-label div{
+    color: var(--ion-color-medium);
+    font-weight: 400;
+}
+
+ion-buttons{
+    width:80px;
+}
+
+.item-icon{
+    font-size: 23px;
+}
+
+.to-update{
+--background: rgb(214, 240, 255);
+}

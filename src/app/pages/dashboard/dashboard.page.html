@@ -1,0 +1,51 @@
+ <ion-toolbar   class="toolbar-lg">
+  <span slot="start"> <img class="logo" src="../../../assets/logo1.png" alt=""></span>
+
+  <span slot="end">
+    <h6>krismarfaria@gmail.com</h6>
+  </span>
+  
+  <ion-avatar slot="end">
+    <img src="../../../assets/avatar.png" />
+  </ion-avatar>
+
+  
+</ion-toolbar>  
+
+
+
+<ion-split-pane  contentId="content">
+  
+  <ion-menu contentId="content" menuId="content" side="start">
+    <ion-content class="ion-padding-vertical">
+      <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
+        <ion-item
+          lines="none"
+          [class.active-item]="selectedPath===p.url"
+          (click)="logout(p.url)"
+          [routerLink]="p.url"
+          routerDirection="root"
+          detail
+        >
+          <div>{{p.title}}</div>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-content>
+    <ion-footer >
+<ion-item>
+  
+  <ion-buttons  slot="start">
+    <ion-button (click)="onClick()">
+      Cerrar sesion
+      <ion-icon style="font-size: 30px; padding-left: 5px;" color="light" name="log-out-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+ 
+</ion-item>
+</ion-footer>
+  </ion-menu>
+  <ion-router-outlet id="content" main></ion-router-outlet>
+  
+</ion-split-pane>
+
+

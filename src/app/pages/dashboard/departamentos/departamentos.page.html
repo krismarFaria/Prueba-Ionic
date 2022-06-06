@@ -1,0 +1,86 @@
+<ion-content>
+  <app-header></app-header>
+  <form class=" d-flex align-items-center justify-content-center" [formGroup]="form" (ngSubmit)="Submit()">
+
+        <ion-card class="ion-padding">
+    <h1>Crear nuevo departamento</h1>
+
+            <!---------------------------TITULO---------------------------------------->  
+            <div class="did-floating-label-content">
+              <input class="did-floating-input" formControlName="nombre" type="text" placeholder=" ">
+              <label class="did-floating-label">
+                <ion-icon name="business"></ion-icon>
+                Nombre</label>
+        
+              <div style="padding-top: 10px;" *ngIf="(nombre.touched) && nombre.errors">
+                <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+                  <span *ngIf="nombre.errors?.required">Este campo es requerido</span>
+                  <span *ngIf="nombre.errors?.nombre">Ingresa el nombre</span>
+                </div>
+              </div>
+            </div>
+    
+          
+    
+    <!---------------------------DESCRIPCION---------------------------------------->
+    
+    <div class="did-floating-label-content">
+      <input class="did-floating-input" formControlName="descripcion" type="text" placeholder=" ">
+      <label class="did-floating-label">
+        <ion-icon name="document-text"></ion-icon>
+        Descripción</label>
+
+      <div style="padding-top: 10px;" *ngIf="(descripcion.touched) && descripcion.errors">
+        <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+          <span *ngIf="descripcion.errors?.required">Este campo es requerido</span>
+          <span *ngIf="descripcion.errors?.descripcion">Ingresa la descripción</span>
+        </div>
+      </div>
+    </div>
+
+      
+
+          <!---------------------------Button---------------------------------------->
+      <div class="ion-text-center">
+        <ion-button [disabled]="form.invalid" (click)="submit()">
+         {{id.value ? 'Editar' : 'Crear'}}
+       </ion-button>
+      </div>
+       
+        </ion-card>
+    
+      </form>
+
+<div class=" d-flex align-items-center justify-content-center">
+<ion-card>
+<div>
+  <h1>Lista de departamentos</h1>
+</div>
+<hr style="  border-top: 2px solid gray;">
+  <ion-list>
+    <ion-item [ngClass]="id.value && id.value == d.id ? 'to-update' : ''" *ngFor="let d of departamentos">
+      <ion-label>
+         {{d.nombre}}
+        <div>Descripcion:{{d.descripcion}}</div>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="selectToUpdate(d)">
+          <ion-icon class="item-icon" name="create-outline"></ion-icon>         
+        </ion-button>
+        <ion-button (click)="deleteDepartamento(d.id)">
+          <ion-icon class="item-icon" name="trash-outline"></ion-icon>         
+        </ion-button>
+      </ion-buttons>
+    </ion-item>  
+  </ion-list>
+
+
+</ion-card>  
+</div>
+
+
+
+
+
+</ion-content>
+

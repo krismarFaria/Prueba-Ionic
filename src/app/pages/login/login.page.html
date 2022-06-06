@@ -1,0 +1,96 @@
+<ion-content >
+ 
+  <img class="logo-content" src="../../../assets/logow.png" alt="">
+
+
+<ion-card >
+
+  
+<ion-grid fixed>
+  <ion-row>
+    <ion-col class="img-bg" size="6">
+
+     <h2>Bienvenidos!</h2>
+     <div class="text">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis doloremque nihil autem! Accusamus libero, vitae aliquid commodi dolores saepe dignissimos.</p>
+     </div>
+     
+    </ion-col>
+
+    <ion-col class="form" style="padding-top: 60px ;" size="6">
+
+
+      <div class="logo ion-text-center">
+        <img src="../../../assets/logoViolet.png" alt="">
+      </div>
+
+
+ <h1>login</h1>
+<p  class=" d-flex align-items-center justify-content-center">¡Bienvenido! Por favor inicie sesión para ingresar en su cuenta.</p>
+
+
+<div class=" d-flex align-items-center justify-content-center" >
+
+<form [formGroup]="form" (ngSubmit)="Submit()">
+
+  <!---------------- EMAIL ----------------------->
+  <div class="did-floating-label-content">
+    <input class="did-floating-input" formControlName="title" type="text" placeholder=" ">
+    <label class="did-floating-label">
+      <ion-icon name="mail"></ion-icon>
+    Correo</label>
+
+    <div style="padding-top: 10px;" *ngIf="(title.touched) && title.errors">
+      <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+        <span *ngIf="title.errors?.required">Este campo es requerido</span>
+        <span *ngIf="title.errors?.email">Ingresa el correo</span>
+      </div>
+    </div>
+  </div>
+<!---------------- PASSWORD ----------------------->
+<div class="did-floating-label-content">
+  <input class="did-floating-input" formControlName="password" type="password" placeholder=" ">
+  <label class="did-floating-label">
+    <ion-icon name="lock-closed"></ion-icon>
+    Contraseña</label>
+
+  <div style="padding-top: 10px;" *ngIf="(password.touched) && password.errors">
+    <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+      <span *ngIf="password.errors?.required">Este campo es requerido</span>
+      <span *ngIf="password.errors?.password">Ingresa la contraseña</span>
+    </div>
+  </div>
+</div>
+
+<div  class=" d-flex align-items-center justify-content-center">
+    
+  <ion-button block color="primary" type="submit">
+    Iniciar Sesión
+    </ion-button>
+</div>
+
+
+  <div class="span">
+    <span>¿Aún no tienes cuenta?</span>
+<span style="font-weight: bold; color: var(--ion-color-primary);">
+  Crear cuenta
+</span>
+  </div>        
+
+</form>
+
+
+
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
+
+</ion-card>
+
+
+
+
+</ion-content>
