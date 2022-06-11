@@ -1,8 +1,8 @@
 export interface Empleado{
     id: string;
     nombre: string;
-    correo: string;
-    contraseña: string;
+    email: string;
+    password: string;
     role: string;
     departamento: string;
 }

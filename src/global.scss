@@ -25,6 +25,10 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+.editar-tarea-modal{
+  --border-radius: 20px;
+  --height: 450px;
+}
 
 ion-content{
     --background: #fbfbfb;
@@ -137,11 +141,14 @@ ion-content{
     font-size: 17px;
     font-weight: bold;
   }
-}
+  
 
+}
 
 @media screen and (min-width:992px){
   app-header{
      display: none;
   }
+
+  
 }

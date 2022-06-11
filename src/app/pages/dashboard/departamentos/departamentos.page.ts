@@ -28,6 +28,11 @@ export class DepartamentosPage implements OnInit {
     this.getDepartamentos();
   }
 
+ 
+  cancelUpdate(){
+    this.form.reset();
+  }
+
 
 
   selectToUpdate(departamento : Departamento ){
@@ -75,7 +80,7 @@ export class DepartamentosPage implements OnInit {
 
   deleteDepartamento(id: string){
     this.db.deleteFromCollection('departamentos', id).then(res =>{   
-      this.db.Toast('Eliminacion exitosa')         
+      this.db.Toast('Eliminado con exito')         
     }, error => {
       this.db.Toast(error.message)
     })

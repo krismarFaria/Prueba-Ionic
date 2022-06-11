@@ -1,0 +1,127 @@
+<form [ngClass]="tarea ? 'ion-padding' : ''" [formGroup]="form" (ngSubmit)="Submit()">
+
+  <h1 [ngClass]="tarea ? 'ion-padding ion-text-center' : ''">
+    {{tarea ? 'Editar Tarea' : 'Crear tarea'}}
+  </h1>
+
+          <!---------------------------TITULO---------------------------------------->  
+          <div class="did-floating-label-content">
+            <input class="did-floating-input" formControlName="title" type="text" placeholder=" ">
+            <label class="did-floating-label">
+              <ion-icon name="brush"></ion-icon>
+              Título</label>
+      
+            <div style="padding-top: 10px;" *ngIf="(title.touched) && title.errors">
+              <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+                <span *ngIf="title.errors?.required">Este campo es requerido</span>
+                <span *ngIf="title.errors?.email">Ingresa el título de la tarea</span>
+              </div>
+            </div>
+          </div>
+  
+        
+  
+  <!---------------------------DESCRIPCION---------------------------------------->
+  
+  <div *ngIf="!tarea" class="did-floating-label-content">
+    <input class="did-floating-input" formControlName="descripcion" type="text" placeholder=" ">
+    <label class="did-floating-label">
+      <ion-icon name="document-text"></ion-icon>
+      Descripción</label>
+
+    <div style="padding-top: 10px;" *ngIf="(descripcion.touched) && descripcion.errors">
+      <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+        <span *ngIf="descripcion.errors?.required">Este campo es requerido</span>
+        <span *ngIf="descripcion.errors?.descripcion">Ingresa la descripción</span>
+      </div>
+    </div>
+  </div>
+
+   
+  
+  <!---------------------------FECHA DE CREACIÓN---------------------------------------->
+  
+  <div class="did-floating-label-content">
+    <input class="did-floating-input" formControlName="fechaDeCreacion" type="date" placeholder=" ">
+    <label class="did-floating-label">
+      <ion-icon name="calendar-clear"></ion-icon>
+      Fecha de creación</label>
+
+    <div style="padding-top: 10px;" *ngIf="(fechaDeCreacion.touched) && fechaDeCreacion.errors">
+      <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+        <span *ngIf="fechaDeCreacion.errors?.required">Este campo es requerido</span>
+        <span *ngIf="fechaDeCreacion.errors?.fechaDeCreacion">Ingresa la fecha de creación</span>
+      </div>
+    </div>
+  </div>
+
+   <!---------------------------FECHA DE FINALIZACIÓN---------------------------------------->
+  
+   <div class="did-floating-label-content">
+    <input class="did-floating-input" formControlName="fechaDeFinalizacion" type="date" placeholder=" ">
+    <label class="did-floating-label">
+      <ion-icon name="calendar-clear"></ion-icon>
+      Fecha de finalización</label>
+
+    <div style="padding-top: 10px;" *ngIf="(fechaDeFinalizacion.touched) && fechaDeFinalizacion.errors">
+      <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+        <span *ngIf="fchaDeFinalizacion.errors?.required">Este campo es requerido</span>
+        <span *ngIf="fechaDeFinalizacion.errors?.fechaDeFinalizacion">Ingresa la fecha de finalización</span>
+      </div>
+    </div>
+  </div>
+    
+<!---------------------------ESTATUS---------------------------------------->
+  
+<div class="did-floating-label-content">
+  
+  <ion-item class="did-floating-input ion-no-padding">
+    <ion-icon name="stats-chart"></ion-icon>
+    <ion-label>Estatus</ion-label>
+    <ion-select  formControlName="estatus" class="custom-options">
+      <ion-select-option value="Pendiente">Pendiente</ion-select-option>
+      <ion-select-option value="En proceso">En proceso</ion-select-option>
+      <ion-select-option value="Realizado">Realizado</ion-select-option>
+      
+    </ion-select>
+  </ion-item>
+  
+
+  <div style="padding-top: 10px;" *ngIf="(estatus.touched) && estatus.errors">
+    <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+      <span *ngIf="estatus.errors?.required">Seleccione el estatus</span>
+      <span *ngIf="estatus.errors?.estatus">Ingresa el estatus</span>
+    </div>
+  </div>
+</div>
+  
+  <!---------------------------EMPLEADO ASIGNADO---------------------------------------->
+  <div *ngIf="!tarea" class="did-floating-label-content">
+
+    <ion-item class="did-floating-input ion-no-padding">
+      <ion-icon name="location"></ion-icon>
+      <ion-label>Responsable:</ion-label>
+      <ion-select formControlName="empleado" class="custom-options">
+        <ion-select-option *ngFor="let e of empleados" [value]="e">{{e.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <div style="padding-top: 10px;" *ngIf="(empleado.touched) && empleado.errors">
+      <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+        <span *ngIf="empleado.errors?.required">Seleccione el empleado</span>
+        <span *ngIf="empleado.errors?.empleado">Este campo es requerido</span>
+      </div>
+    </div>
+  </div>
+
+        <!---------------------------Button---------------------------------------->
+        <div class="ion-text-center">
+          <ion-button [disabled]="form.invalid" (click)="submit()">
+            {{tarea ? 'Editar Tarea' : 'Crear Tarea'}}         </ion-button>
+        </div>
+     
+      
+  
+  
+    </form>

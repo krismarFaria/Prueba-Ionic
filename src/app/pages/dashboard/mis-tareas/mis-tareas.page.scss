@@ -1,0 +1,23 @@
+ion-label{
+    color: var(--ion-color-primary);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+p{
+font-weight: bold;
+font-size: 13px;
+overflow: hidden;
+
+}
+
+p span{
+    font-weight: normal;
+    color: var(--ion-color-medium);
+}
+
+ion-card ion-buttons{
+    width: 60px;
+    position: relative;
+    left: 90%;
+}

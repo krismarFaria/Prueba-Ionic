@@ -31,19 +31,19 @@
 
 <div class=" d-flex align-items-center justify-content-center" >
 
-<form [formGroup]="form" (ngSubmit)="Submit()">
+<form [formGroup]="form">
 
   <!---------------- EMAIL ----------------------->
   <div class="did-floating-label-content">
-    <input class="did-floating-input" formControlName="title" type="text" placeholder=" ">
+    <input class="did-floating-input" formControlName="email" type="text" placeholder=" ">
     <label class="did-floating-label">
       <ion-icon name="mail"></ion-icon>
     Correo</label>
 
-    <div style="padding-top: 10px;" *ngIf="(title.touched) && title.errors">
+    <div style="padding-top: 10px;" *ngIf="(email.touched) && email.errors">
       <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
-        <span *ngIf="title.errors?.required">Este campo es requerido</span>
-        <span *ngIf="title.errors?.email">Ingresa el correo</span>
+        <span *ngIf="email.errors?.required">Este campo es requerido</span>
+        <span *ngIf="email.errors?.email">Ingresa el correo</span>
       </div>
     </div>
   </div>
@@ -64,18 +64,13 @@
 
 <div  class=" d-flex align-items-center justify-content-center">
     
-  <ion-button block color="primary" type="submit">
+  <ion-button [disabled]="form.invalid" (click)="Login()" block color="primary" type="submit">
     Iniciar Sesión
     </ion-button>
 </div>
 
 
-  <div class="span">
-    <span>¿Aún no tienes cuenta?</span>
-<span style="font-weight: bold; color: var(--ion-color-primary);">
-  Crear cuenta
-</span>
-  </div>        
+       
 
 </form>
 

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { DashboardPage } from './dashboard.page';
+import { SuperUsuarioGuard } from './guards/super-usuario.guard';
+import { SupervisorGuard } from './guards/supervisor.guard';
 
 const routes: Routes = [
   {
@@ -10,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: 'crear-tarea',
-        loadChildren: () => import('./crear-tarea/crear-tarea.module').then( m => m.CrearTareaPageModule)
+        loadChildren: () => import('./crear-tarea/crear-tarea.module').then( m => m.CrearTareaPageModule), canActivate: [SupervisorGuard]
       },
       {
         path: 'mis-tareas',
@@ -22,15 +23,15 @@ const routes: Routes = [
       },
       {
         path: 'roles',
-        loadChildren: () => import('./roles/roles.module').then( m => m.RolesPageModule)
+        loadChildren: () => import('./roles/roles.module').then( m => m.RolesPageModule), canActivate: [SuperUsuarioGuard]
       },
       {
         path: 'departamentos',
-        loadChildren: () => import('./departamentos/departamentos.module').then( m => m.DepartamentosPageModule)
+        loadChildren: () => import('./departamentos/departamentos.module').then( m => m.DepartamentosPageModule), canActivate: [SuperUsuarioGuard]
       },
       {
         path: 'empleados',
-        loadChildren: () => import('./empleados/empleados.module').then( m => m.EmpleadosPageModule)
+        loadChildren: () => import('./empleados/empleados.module').then( m => m.EmpleadosPageModule), canActivate: [SuperUsuarioGuard]
       },
     ]
   }

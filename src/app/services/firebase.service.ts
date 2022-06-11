@@ -145,10 +145,7 @@ export class FirebaseService {
 
   logout() {
     this.auth.auth.signOut().then(() => {
-      localStorage.removeItem('uid');
-      localStorage.removeItem('sessionId');
-      localStorage.removeItem('openingId');
-      localStorage.removeItem('role');
+          
       this.router.navigate(['login']);
     });
   }
@@ -159,8 +156,8 @@ export class FirebaseService {
     return this.loadingController;
   }
 
-  routerLink() {
-    return this.router;
+  goTo(url:string) {
+    this.router.navigateByUrl(url)
   }
 
   async Toast(message) {

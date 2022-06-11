@@ -60,17 +60,29 @@
   <ion-list>
     <ion-item [ngClass]="id.value && id.value == d.id ? 'to-update' : ''" *ngFor="let d of departamentos">
       <ion-label>
-         {{d.nombre}}
-        <div>Descripcion:{{d.descripcion}}</div>
+        
+        <div class="empleados">
+          Nombre: <span>{{d.nombre}} </span>
+        </div>
+        <div class="empleados">
+          Descripción: <span>{{d.descripcion}} </span>
+        </div>
       </ion-label>
-      <ion-buttons slot="end">
+
+
+      <ion-buttons *ngIf="!id.value || (id.value && id.value !== d.id)" slot="end">
         <ion-button (click)="selectToUpdate(d)">
-          <ion-icon class="item-icon" name="create-outline"></ion-icon>         
+          <ion-icon class="item-icon" name="create-outline"></ion-icon>
         </ion-button>
         <ion-button (click)="deleteDepartamento(d.id)">
-          <ion-icon class="item-icon" name="trash-outline"></ion-icon>         
+          <ion-icon class="item-icon" name="trash-outline"></ion-icon>
         </ion-button>
       </ion-buttons>
+      <ion-button *ngIf="id.value && id.value == d.id" color="medium" (click)="cancelUpdate()">
+        Cancelar
+      </ion-button>
+
+
     </ion-item>  
   </ion-list>
 

@@ -42,15 +42,22 @@
     <!---------------------------ID DEL EMPLEADO CREADOR---------------------------------------->
     
     <div class="did-floating-label-content">
-      <input class="did-floating-input" formControlName="rango" type="text" placeholder=" ">
-      <label class="did-floating-label">
+
+      <ion-item class="did-floating-input ion-no-padding">
         <ion-icon name="stats-chart"></ion-icon>
-        Rango</label>
+        <ion-label>Rango</ion-label>
+        <ion-select formControlName="rango" class="custom-options">
+          <ion-select-option  value="1">1</ion-select-option>
+          <ion-select-option  value="2">2</ion-select-option>
+          <ion-select-option  value="3">3</ion-select-option>
+        </ion-select>
+      </ion-item>
+
 
       <div style="padding-top: 10px;" *ngIf="(rango.touched) && rango.errors">
-        <div style="border-radius: 20px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
-          <span *ngIf="rango.errors?.required">Este campo es requerido</span>
-          <span *ngIf="rango.errors?.rango">Ingresa el rango</span>
+        <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+          <span *ngIf="rango.errors?.required">Seleccione el rango</span>
+          
         </div>
       </div>
     </div>
@@ -76,10 +83,18 @@
   <ion-list>
     <ion-item [ngClass]="id.value && id.value == r.id ? 'to-update' : ''" *ngFor="let r of roles">
       <ion-label>
-         {{r.nombre}}
-        <div>Rango:{{r.rango}}</div>
-        <div>Descripcion:{{r.descripcion}}</div>
+        
+        <div class="empleados">
+          Nombre: <span>{{r.nombre}} </span>
+        </div>
+        <div class="empleados">
+          Rango: <span>{{r.rango}} </span>
+        </div>
+        <div class="empleados">
+          Descripcion: <span>{{r.descripcion}} </span>
+        </div>
       </ion-label>
+
       <ion-buttons slot="end">
         <ion-button (click)="selectToUpdate(r)">
           <ion-icon class="item-icon" name="create-outline"></ion-icon>         

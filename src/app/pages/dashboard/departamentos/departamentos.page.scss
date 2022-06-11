@@ -1,10 +1,10 @@
-ion-item ion-label{
-    --color: var(--ion-color-primary);
+.empleados span{
+    color: var(--ion-color-dark);
+    font-weight: 300;
 }
 
-ion-item ion-label div{
-    color: var(--ion-color-medium);
-    font-weight: 400;
+.empleados{
+    color: var(--ion-color-primary);
 }
 
 ion-buttons{

@@ -2,144 +2,163 @@
   <app-header></app-header>
   <form class=" d-flex align-items-center justify-content-center" [formGroup]="form" (ngSubmit)="Submit()">
 
-        <ion-card class="ion-padding">
-    <h1>Crear nuevo empleado</h1>
+    <ion-card class="ion-padding">
+      <h1>Crear nuevo empleado</h1>
 
-            <!---------------------------NOMBRE---------------------------------------->  
-            <div class="did-floating-label-content">
-              <input class="did-floating-input" formControlName="nombre" type="text" placeholder=" ">
-              <label class="did-floating-label">
-                <ion-icon name="person-add"></ion-icon>
-                Nombre</label>
-        
-              <div style="padding-top: 10px;" *ngIf="(nombre.touched) && nombre.errors">
-                <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
-                  <span *ngIf="nombre.errors?.required">Este campo es requerido</span>
-                  <span *ngIf="nombre.errors?.nombre">Ingresa el nombre</span>
-                </div>
-              </div>
-            </div>
-    
-          
-    
-    <!---------------------------EMAIL---------------------------------------->
-    
-    <div class="did-floating-label-content">
-      <input class="did-floating-input" formControlName="email" type="text" placeholder=" ">
-      <label class="did-floating-label">
-        <ion-icon name="mail"></ion-icon>
-        Correo</label>
+      <!---------------------------TITULO---------------------------------------->
+      <div class="did-floating-label-content">
+        <input class="did-floating-input" formControlName="nombre" type="text" placeholder=" ">
+        <label class="did-floating-label">
+          <ion-icon name="person-add"></ion-icon>
+          Nombre y Apellido
+        </label>
 
-      <div style="padding-top: 10px;" *ngIf="(email.touched) && email.errors">
-        <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
-          <span *ngIf="email.errors?.required">Este campo es requerido</span>
-          <span *ngIf="email.errors?.email">Ingresa el correo</span>
+        <div style="padding-top: 10px;" *ngIf="(nombre.touched) && nombre.errors">
+          <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+            <span *ngIf="nombre.errors?.required">Este campo es requerido</span>
+            <span *ngIf="nombre.errors?.nombre">Ingresa el nombre</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    
-    
-    <!---------------------------EMAIL---------------------------------------->
-    
-    <div class="did-floating-label-content">
-      <input class="did-floating-input" formControlName="password" type="password" placeholder=" ">
-      <label class="did-floating-label">
-        <ion-icon name="lock-closed"></ion-icon>
-        Contraseña</label>
 
-      <div style="padding-top: 10px;" *ngIf="(password.touched) && password.errors">
-        <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
-          <span *ngIf="password.errors?.required">Este campo es requerido</span>
-          <span *ngIf="password.errors?.password">Ingresa la contraseña</span>
+      <!---------------------------EMAIL---------------------------------------->
+
+      <div class="did-floating-label-content">
+        <input class="did-floating-input" formControlName="email" type="text" placeholder=" ">
+        <label class="did-floating-label">
+          <ion-icon name="mail"></ion-icon>
+          Correo
+        </label>
+
+        <div style="padding-top: 10px;" *ngIf="(email.touched) && email.errors">
+          <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+            <span *ngIf="email.errors?.required">Este campo es requerido</span>
+            <span *ngIf="email.errors?.email">Ingresa el correo</span>
+          </div>
         </div>
       </div>
-    </div>
 
-      
-  <!---------------------------ROL---------------------------------------->
-    
-  <div class="did-floating-label-content">
-    
-    <ion-item class="did-floating-input ion-no-padding">
-      <ion-icon name="stats-chart"></ion-icon>
-      <ion-label>Rol</ion-label>
-      <ion-select class="custom-options">
-        <ion-select-option *ngFor="let r of roles" [value]="r.id">{{r.nombre}}</ion-select-option>
-      
-        
-      </ion-select>
-    </ion-item>
-    
 
-    <div style="padding-top: 10px;" *ngIf="(rol.touched) && rol.errors">
-      <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
-        <span *ngIf="rol.errors?.required">Estatus</span>
-        <span *ngIf="rol.errors?.estatus">Ingresa el estatus</span>
+
+      <!---------------------------CONTRASEñA---------------------------------------->
+
+      <div *ngIf="!id.value" class="did-floating-label-content">
+        <input class="did-floating-input" formControlName="password" type="password" placeholder=" ">
+        <label class="did-floating-label">
+          <ion-icon name="lock-closed"></ion-icon>
+          Contraseña
+        </label>
+
+        <div style="padding-top: 10px;" *ngIf="(password.touched) && password.errors">
+          <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+            <span *ngIf="password.errors?.required">Este campo es requerido</span>
+            <span *ngIf="password.errors?.password">Ingresa la contraseña</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  
-      
-  <!---------------------------DEPARTAMENTO---------------------------------------->
-    
-  <div class="did-floating-label-content">
-    
-    <ion-item class="did-floating-input ion-no-padding">
-      <ion-icon name="location"></ion-icon>
-      <ion-label>Departamento</ion-label>
-      <ion-select class="custom-options">
-        <ion-select-option value="pendiente">Departamento 1</ion-select-option>
-        <ion-select-option value="enProceso">Departamento 2</ion-select-option>
-        <ion-select-option value="realizada">Departamento 3</ion-select-option>
-        
-      </ion-select>
-    </ion-item>
-    
 
-    <div style="padding-top: 10px;" *ngIf="(departamento.touched) && departamento.errors">
-      <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
-        <span *ngIf="departamento.errors?.required">Estatus</span>
-        <span *ngIf="departamento.errors?.estatus">Ingresa el estatus</span>
+      <!---------------------------ROL---------------------------------------->
+
+      <div class="did-floating-label-content">
+
+        <ion-item class="did-floating-input ion-no-padding">
+          <ion-icon name="stats-chart"></ion-icon>
+          <ion-label>Rol</ion-label>
+          <ion-select formControlName="role" class="custom-options">
+            <ion-select-option *ngFor="let r of roles" [value]="r">{{r.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <div style="padding-top: 10px;" *ngIf="(role.touched) && role.errors">
+          <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+            <span *ngIf="role.errors?.required">Seleccione el rol</span>
+            <span *ngIf="role.errors?.role">Este campo es requerido</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  
-          <!---------------------------Button---------------------------------------->
+
+
+      <!---------------------------DEPARTAMENTO---------------------------------------->
+
+      <div class="did-floating-label-content">
+
+        <ion-item class="did-floating-input ion-no-padding">
+          <ion-icon name="location"></ion-icon>
+          <ion-label>Departamento</ion-label>
+          <ion-select formControlName="departamento" class="custom-options">
+            <ion-select-option *ngFor="let d of departamentos" [value]="d">{{d.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+
+        <div style="padding-top: 10px;" *ngIf="(departamento.touched) && departamento.errors">
+          <div style="border-radius: 5px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+            <span *ngIf="departamento.errors?.required">Seleccione el departamento</span>
+            <span *ngIf="departamento.errors?.departamento">Este campo es requerido</span>
+          </div>
+        </div>
+      </div>
+
+
+      <!---------------------------Button---------------------------------------->
       <div class="ion-text-center">
-        <ion-button (click)="onClick()">
-         Crear
-       </ion-button>
+        <ion-button [disabled]="form.invalid" (click)="submit()">
+          {{id.value ? 'Editar' : 'Crear'}}
+        </ion-button>
       </div>
-       
-        </ion-card>
-    
-      </form>
+    </ion-card>
 
-<div class=" d-flex align-items-center justify-content-center">
-<ion-card>
-<div>
-  <h1>Lista de empleados</h1>
-</div>
-<hr style="  border-top: 2px solid gray;">
-  <ion-list>
-    <ion-item>
-      <ion-label>Empleado 1</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Empleado 2</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Empleado 3</ion-label>
-    </ion-item>
-   
-  </ion-list>
+  </form>
+
+  <div class=" d-flex align-items-center justify-content-center">
+    <ion-card>
+      <div>
+        <h1>Lista de empleados</h1>
+      </div>
+      <hr style="  border-top: 2px solid gray;">
+      <ion-list>
+        <ion-item [ngClass]="id.value && id.value == e.id ? 'to-update' : ''" *ngFor="let e of empleados">
 
 
-</ion-card>  
-</div>
+          <ion-label>
+            <div class="empleados">
+              Nombre y apellido: <span>{{e.nombre}} </span>
+            </div>
+            <div class="empleados">
+              Correo: <span>{{e.email}} </span>
+            </div>
+            <div class="empleados" >                
+              Rol: <span>{{e.role.nombre}} </span>               
+            </div>
+            <div class="empleados">                
+              Departamento: <span>{{e.departamento.nombre}} </span>               
+            </div>
+          </ion-label>
+
+
+
+
+
+          <ion-buttons *ngIf="!id.value || (id.value && id.value !== e.id)" slot="end">
+            <ion-button (click)="selectToUpdate(e)">
+              <ion-icon class="item-icon" name="create-outline"></ion-icon>
+            </ion-button>
+            <ion-button (click)="deleteEmpleado(e.id)">
+              <ion-icon class="item-icon" name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-button *ngIf="id.value && id.value == e.id" color="medium" (click)="cancelUpdate()">
+            Cancelar
+          </ion-button>
+        </ion-item>
+      </ion-list>
+
+
+    </ion-card>
+  </div>
 
 
 
