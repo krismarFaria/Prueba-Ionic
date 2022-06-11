@@ -9,5 +9,5 @@ Requerimientos:
 2) Para inicializar el proyecto, usa el comando: ionic serve
 
 Inicia sesión en la app con las siguientes credenciales: \n
-email: admin@gmail.com
-contraseña: 123456
+>email: admin@gmail.com
+>contraseña: 123456
