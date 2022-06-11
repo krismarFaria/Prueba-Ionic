@@ -8,6 +8,6 @@ Requerimientos:
 1) Para instalar las dependencias, abre una terminal en la raiz del proyecto y usa el comando: npm install o yarn
 2) Para inicializar el proyecto, usa el comando: ionic serve
 
-Inicia sesión en la app con las siguientes credenciales:
+Inicia sesión en la app con las siguientes credenciales: \n
 email: admin@gmail.com
 contraseña: 123456
