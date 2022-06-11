@@ -30,6 +30,9 @@ export class RolesPage implements OnInit {
   }
 
 
+  cancelUpdate(){
+    this.form.reset();
+  }
 
   selectToUpdate(role: Role){
     this.id.setValue(role.id)

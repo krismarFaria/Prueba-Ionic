@@ -3,7 +3,7 @@
   <form class=" d-flex align-items-center justify-content-center" [formGroup]="form" (ngSubmit)="Submit()">
 
         <ion-card class="ion-padding">
-    <h1>Crear nuevo rol</h1>
+    <h1>{{id.value ? 'Editar Rol' : 'Crear nuevo rol'}}</h1>
 
             <!---------------------------TITULO---------------------------------------->  
             <div class="did-floating-label-content">
@@ -95,14 +95,18 @@
         </div>
       </ion-label>
 
-      <ion-buttons slot="end">
+
+      <ion-buttons *ngIf="!id.value || (id.value && id.value !== r.id)" slot="end">
         <ion-button (click)="selectToUpdate(r)">
-          <ion-icon class="item-icon" name="create-outline"></ion-icon>         
+          <ion-icon class="item-icon" name="create-outline"></ion-icon>
         </ion-button>
-        <ion-button (click)="deleteRole(r.id)">
-          <ion-icon class="item-icon" name="trash-outline"></ion-icon>         
+        <ion-button (click)="deleteDepartamento(r.id)">
+          <ion-icon class="item-icon" name="trash-outline"></ion-icon>
         </ion-button>
       </ion-buttons>
+      <ion-button *ngIf="id.value && id.value == r.id" color="medium" (click)="cancelUpdate()">
+        Cancelar
+      </ion-button>
     </ion-item>  
   </ion-list>
 

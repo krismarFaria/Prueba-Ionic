@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as firebase from 'firebase';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -53,7 +55,7 @@ export class LoginPage implements OnInit {
         localStorage.setItem('user',JSON.stringify(data));
 
         if(data.role.rango == '1'){
-          this.db.goTo('dashboard/crear-tarea');          
+          this.db.goTo('dashboard/crear-tarea');                 
         }
     
         if(data.role.rango == '2'){

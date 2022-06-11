@@ -16,8 +16,9 @@ export class EmpleadosPage implements OnInit {
   roles = [];
   departamentos = [];
   empleados = [];
-
-  constructor(private formBuilder: FormBuilder,
+  user;
+  constructor(
+    private formBuilder: FormBuilder,
     private db: FirebaseService) {
 
   }
@@ -32,10 +33,18 @@ export class EmpleadosPage implements OnInit {
       departamento: ['', [Validators.required]],
 
     });
-    firebase.initializeApp(environment.firebaseConfig, "Secondary");
+
+    if(firebase.apps.length < 2){
+    firebase.initializeApp(environment.firebaseConfig, "Secondary");       
+    }
+        
     this.getRoles();
     this.getDepartamentos();
     this.getEmpleados();
+  }
+
+  ionViewWillEnter() {
+    this.user = JSON.parse(localStorage.getItem('user'));    
   }
 
   cancelUpdate(){
@@ -102,14 +111,55 @@ export class EmpleadosPage implements OnInit {
   }
 
 
-  deleteEmpleado(id: string) {
-    this.db.deleteFromCollection('empleados', id).then(res => {
-      this.db.Toast('Eliminacion exitosa')
+
+  async AuthForDelete(user) {
+    
+    const loading = await this.db.loader().create();
+    await loading.present();
+
+    this.db.AuthForDelete(user.email, user.password).then(res => {
+      loading.dismiss();
+      this.DeleteUserAuth(user);
     }, error => {
-      this.db.Toast(error.message)
+      loading.dismiss();
+      console.log(error);
     })
   }
 
+
+  async DeleteUserAuth(user) {
+    const loading = await this.db.loader().create();
+    await loading.present();
+
+    this.db.DeleteUserAuth().then(res => {
+
+      this.DeleteUserDB(user);
+      loading.dismiss();
+
+    }, error => {
+
+      loading.dismiss();
+      console.log(error);
+      
+    })
+  }
+
+  async DeleteUserDB(user) {
+    const loading = await this.db.loader().create();
+    await loading.present();
+
+    this.db.deleteFromCollection('empleados',user.id).then(res => {
+      this.db.Toast('Eliminacion exitosa')
+      
+      loading.dismiss();
+
+    }, error => {
+
+      loading.dismiss();
+      console.log(error);
+
+    })
+  }
 
 
   getEmpleados() {

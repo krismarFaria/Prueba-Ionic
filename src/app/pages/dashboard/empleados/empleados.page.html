@@ -3,7 +3,7 @@
   <form class=" d-flex align-items-center justify-content-center" [formGroup]="form" (ngSubmit)="Submit()">
 
     <ion-card class="ion-padding">
-      <h1>Crear nuevo empleado</h1>
+      <h1>{{id.value ? 'Editar Empleado' : 'Crear nuevo empleado'}}</h1>
 
       <!---------------------------TITULO---------------------------------------->
       <div class="did-floating-label-content">
@@ -146,7 +146,7 @@
             <ion-button (click)="selectToUpdate(e)">
               <ion-icon class="item-icon" name="create-outline"></ion-icon>
             </ion-button>
-            <ion-button (click)="deleteEmpleado(e.id)">
+            <ion-button *ngIf="user.id !== e.id" (click)="AuthForDelete(e)">
               <ion-icon class="item-icon" name="trash-outline"></ion-icon>
             </ion-button>
           </ion-buttons>

@@ -3,7 +3,7 @@
   <form class=" d-flex align-items-center justify-content-center" [formGroup]="form" (ngSubmit)="Submit()">
 
         <ion-card class="ion-padding">
-    <h1>Crear nuevo departamento</h1>
+    <h1>{{id.value ? 'Editar Departamento' : 'Crear Nuevo Departamento'}} </h1>
 
             <!---------------------------TITULO---------------------------------------->  
             <div class="did-floating-label-content">
